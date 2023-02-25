@@ -1,0 +1,5 @@
+2204
+libvirt.box
+.vagrant/machines/master-vm/libvirt/private_key
+.vagrant/machines/worker1/libvirt/private_key
+.vagrant/machines/worker2/libvirt/private_key
