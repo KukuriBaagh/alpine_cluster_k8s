@@ -7,24 +7,24 @@
 # you're doing.
 Vagrant.configure("2") do |config|
   config.vm.define "master-vm" do |ma|
-    ma.vm.box = "libvirt.box"
-    ma.vm.hostname = "master-node"
+    ma.vm.box = "bionic.box"
+    ma.vm.hostname = "master"
     ma.vm.network "private_network", ip: "192.168.10.11"
 
     ma.vm.provider "libvirt" do |qemu|
-      qemu.memory = "1024"
-      qemu.cpus = 1
+      qemu.memory = "2048"
+      qemu.cpus = 2
     end
 
     ma.vm.provision "shell", run: "always", inline: <<-SHELL
-          echo "Hello, From Master VM"
+          echo "Hello, From Master Node"
     SHELL
 
   end
 
-  config.vm.define "worker1" do |wk1|
-    wk1.vm.box = "libvirt.box"
-    wk1.vm.hostname = "worker-node1"
+  config.vm.define "workerone" do |wk1|
+    wk1.vm.box = "bionic.box"
+    wk1.vm.hostname = "firstworker"
     wk1.vm.network "private_network", ip: "192.168.10.12"
 
     wk1.vm.provider "libvirt" do |qemu|
@@ -33,14 +33,14 @@ Vagrant.configure("2") do |config|
     end
 
     wk1.vm.provision "shell", run: "always", inline: <<-SHELL
-          echo "Hello, From Worker One"
+          echo "Hello, From First Worker"
     SHELL
 
   end
 
-  config.vm.define "worker2" do |wk2|
-    wk2.vm.box = "libvirt.box"
-    wk2.vm.hostname = "worker-node2"
+  config.vm.define "workertwo" do |wk2|
+    wk2.vm.box = "bionic.box"
+    wk2.vm.hostname = "secondworker"
     wk2.vm.network "private_network", ip: "192.168.10.13"
 
     wk2.vm.provider "libvirt" do |qemu|
@@ -49,7 +49,7 @@ Vagrant.configure("2") do |config|
     end
 
     wk2.vm.provision "shell", run: "always", inline: <<-SHELL
-          echo "Hello, From Worker Two"
+          echo "Hello, From Second Worker"
     SHELL
 
   end
