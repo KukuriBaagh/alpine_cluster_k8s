@@ -9,12 +9,12 @@
       ansible.builtin.apt:
         update_cache: yes
 
-    - name: Add php support for nginx
+    - name: Remove php support for nginx
       ansible.builtin.apt:
         name: php-fpm
-        state: latest
+        state: absent
 
-    - name: Install nginx package
+    - name: Remove nginx package
       ansible.builtin.apt:
         name: nginx
-        state: latest
+        state: absent
