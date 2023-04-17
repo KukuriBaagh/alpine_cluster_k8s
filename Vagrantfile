@@ -37,21 +37,5 @@ Vagrant.configure("2") do |config|
     SHELL
 
   end
-
-  config.vm.define "workertwo" do |wk2|
-    wk2.vm.box = "bionic.box"
-    wk2.vm.hostname = "secondworker"
-    wk2.vm.network "private_network", ip: "192.168.10.13"
-
-    wk2.vm.provider "libvirt" do |qemu|
-      qemu.memory = "1024"
-      qemu.cpus = 1
-    end
-
-    wk2.vm.provision "shell", run: "always", inline: <<-SHELL
-          echo "Hello, From Second Worker"
-    SHELL
-
-  end
-
+  
 end
