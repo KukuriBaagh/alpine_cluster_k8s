@@ -22,9 +22,9 @@ Vagrant.configure("2") do |config|
 
   end
 
-  config.vm.define "workerone" do |wk1|
+  config.vm.define "worker" do |wk1|
     wk1.vm.box = "bionic.box"
-    wk1.vm.hostname = "firstworker"
+    wk1.vm.hostname = "worker"
     wk1.vm.network "private_network", ip: "192.168.10.12"
 
     wk1.vm.provider "libvirt" do |qemu|
@@ -33,9 +33,9 @@ Vagrant.configure("2") do |config|
     end
 
     wk1.vm.provision "shell", run: "always", inline: <<-SHELL
-          echo "Hello, From First Worker"
+          echo "Hello, From Worker"
     SHELL
 
   end
-  
+
 end
